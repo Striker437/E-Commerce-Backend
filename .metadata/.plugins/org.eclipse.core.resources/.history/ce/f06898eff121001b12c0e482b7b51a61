@@ -1,0 +1,16 @@
+package com.Ecommerce.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
+
+import com.Ecommerce.Entity.Product;
+
+
+@Component
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+	List<Product> findAllById(int category_id);
+
+}

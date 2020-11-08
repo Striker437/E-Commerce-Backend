@@ -32,8 +32,10 @@ public class User {
 	  @OneToOne
 	  Cart cart;
 	 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-	List<Order>Orderlist=new ArrayList<Order>();
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	 * List<Order>Orderlist=new ArrayList<Order>();
+	 */
 	public int getId() {
 		return id;
 	}

@@ -22,10 +22,13 @@ public class Order{
 	Date order_placed_date;
 	Date shipped_date;
 	int price;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
-	List<Product>Productlist=new ArrayList();
-	@ManyToOne
-	User user;
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
+	 * List<Product>Productlist=new ArrayList();
+	 */
+	/*
+	 * @ManyToOne User user;
+	 */
 	
 	
 	

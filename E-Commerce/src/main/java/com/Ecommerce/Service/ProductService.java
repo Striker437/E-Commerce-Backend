@@ -6,10 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Ecommerce.Entity.Category;
+import com.Ecommerce.Entity.Product;
 import com.Ecommerce.Repository.CategoryRepository;
+import com.Ecommerce.Repository.ProductRepository;
 
 @Service
 public class ProductService {
+	
+	
+	@Autowired
+	ProductRepository productRepository;
+
+	public List<Product> getAllProducts() {
+		
+		return productRepository.findAll();
+		
+		
+	}
+
+	public List<Product> getProductsByCategory(int category_id) {
+		return productRepository.findAllById(category_id);
+		
+	}
 	
 	
 
