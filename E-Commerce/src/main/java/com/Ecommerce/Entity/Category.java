@@ -22,11 +22,24 @@ public class Category {
 	String type;
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "category" )
 	List<Product>productlist=new ArrayList();
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", type=" + type + ", productlist=" + productlist + "]";
+	}
 	public int getId() {
 		return id;
 	}
+	public Category() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Category(int id, String type) {
+		super();
+		this.id = id;
+		this.type = type;
 	}
 	public String getType() {
 		return type;

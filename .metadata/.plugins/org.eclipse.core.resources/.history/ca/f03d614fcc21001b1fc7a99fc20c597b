@@ -1,0 +1,23 @@
+package com.Ecommerce.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.Ecommerce.Entity.Category;
+
+@Service
+public class CategoryService {
+	
+	List<Category> CategoryList=new ArrayList();
+	
+	
+	static {
+		
+		new 
+		
+		
+	}
+
+}
