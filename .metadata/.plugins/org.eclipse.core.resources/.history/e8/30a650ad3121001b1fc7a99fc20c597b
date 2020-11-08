@@ -1,0 +1,17 @@
+package com.Ecommerce.Entity;
+
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+public class Cart {
+	
+	int id;
+	int totalprice;
+	int quantity;
+	@OneToOne
+	User user;
+	@OneToMany
+	List<Product>Productlist=new ArrayList<>();
+
+}

@@ -1,0 +1,9 @@
+package com.Ecommerce.Entity;
+
+public class Cart {
+	
+	int id;
+	int totalprice;
+	int quantity;
+
+}

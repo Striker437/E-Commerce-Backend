@@ -1,0 +1,22 @@
+package com.Ecommerce.Entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Cart {
+	
+	int id;
+	int totalprice;
+	int quantity;
+	@OneToOne
+	User user;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "cart")
+	List<Product>Productlist=new ArrayList<>();
+
+}

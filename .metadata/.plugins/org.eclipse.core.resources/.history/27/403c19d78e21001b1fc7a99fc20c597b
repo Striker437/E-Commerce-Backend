@@ -1,0 +1,8 @@
+package com.Ecommerce.Controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController("/category")
+public class CategoryController {
+
+}

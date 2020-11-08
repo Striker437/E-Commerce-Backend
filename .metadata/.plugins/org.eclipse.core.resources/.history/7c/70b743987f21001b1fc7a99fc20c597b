@@ -1,0 +1,36 @@
+package com.Ecommerce.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Ecommerce.Entity.User;
+import com.Ecommerce.Repository.UserRepository;
+
+@RestController
+public class UserController {
+	
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@GetMapping("/user")
+	public void getAllUser()
+	{
+	User user=new User();
+	user.setName("Shivam Singh");
+	user.setAddress("Pratapgarh");
+	user.setPassword("12345");
+	user.setPhoneno(9793);
+	user.setRole("ROLE_USER");
+	userRepository.save(user);
+	
+	
+	}
+	
+	
+	
+
+}
