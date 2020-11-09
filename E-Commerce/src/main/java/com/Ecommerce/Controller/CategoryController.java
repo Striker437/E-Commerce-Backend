@@ -63,9 +63,9 @@ public class CategoryController {
 	//Update a category by id
 	
 	@PutMapping("/{Id}")
-	public void UpdateCategoryById(@PathVariable("Id") int Id,@RequestBody Category category)
+	public void UpdateCategoryById(@PathVariable("Id") int Id)
 	{
-		categoryService.UpdateCategoryById(Id,category);
+		categoryService.UpdateCategoryById(Id);
 	}
 	
 	
