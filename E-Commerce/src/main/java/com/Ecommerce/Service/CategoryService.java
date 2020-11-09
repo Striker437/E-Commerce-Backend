@@ -33,11 +33,11 @@ public class CategoryService {
 		return categoryRepository.findById(id);
 	}
 	
-	public void UpdateCategoryById(int id)
+	public void UpdateCategoryById(int id, Category category)
 	{
-	  Optional<Category> optional=categoryRepository.findById(id);
-	  Category category=optional.get();
-	  category.setType("Stationary");
+	  //Optional<Category> optional=categoryRepository.findById(id);
+	//  Category category=optional.get();
+	 // category.setType("Stationary");
 	  categoryRepository.save(category);  //commit to database
 	}
 
