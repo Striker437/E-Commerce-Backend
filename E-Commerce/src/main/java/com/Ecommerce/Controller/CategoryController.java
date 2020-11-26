@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ecommerce.Entity.Category;
@@ -64,9 +65,9 @@ public class CategoryController {
 	//Update a category by id
 	
 	@PutMapping("/{Id}")
-	public void UpdateCategoryById(@PathVariable("Id") int Id)
+	public void UpdateCategoryById(@PathVariable("Id") int Id, @RequestBody Category category)
 	{
-		categoryService.UpdateCategoryById(Id);
+		categoryService.UpdateCategoryById(Id, category);
 	}
 	
 	
