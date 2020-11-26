@@ -22,9 +22,11 @@ public class Cart {
 	int quantity;
 	@OneToOne
 	User user;
+	
 	/*
 	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "cart")
 	 * List<Product>Productlist=new ArrayList<>();
 	 */
+	 
 
 }

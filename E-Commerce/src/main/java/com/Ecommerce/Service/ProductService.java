@@ -1,6 +1,7 @@
 package com.Ecommerce.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,29 @@ public class ProductService {
 	public List<Product> getProductsByCategory(int category_id) {
 		return productRepository.findAllById(category_id);
 		
+	}
+
+	public void saveProduct(Product product) {
+		
+		productRepository.save(product);
+		
+		
+	}
+
+	public void DeleteById(int id) {
+		
+		productRepository.deleteById(id);
+		
+		
+		
+		
+	}
+
+	public Product getProductDetail(int id) {
+		
+		Optional<Product> optional=productRepository.findById(id);
+		Product product=optional.get();
+		return product;
 	}
 	
 	
