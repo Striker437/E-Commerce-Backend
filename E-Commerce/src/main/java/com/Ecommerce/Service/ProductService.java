@@ -52,6 +52,10 @@ public class ProductService {
 		Product product=optional.get();
 		return product;
 	}
+
+	public List<Product> getProductsByContainingName(String keyword) {
+		return productRepository.findByNameContaining(keyword);
+	}
 	
 	
 

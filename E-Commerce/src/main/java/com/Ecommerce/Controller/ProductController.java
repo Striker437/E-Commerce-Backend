@@ -51,6 +51,13 @@ public class ProductController {
 		
 	}
 	
+	@GetMapping("/search/{keyword}")
+	public List<Product> getProductsByContainingName(@PathVariable("keyword") String keyword)
+	{
+		List<Product>productListByName=productService.getProductsByContainingName(keyword);
+		return productListByName;
+	}
+	
 	@PostMapping("/add")
 	public void addProduct(@RequestBody Product product) {
 		productService.saveProduct(product);
@@ -64,6 +71,8 @@ public class ProductController {
 		productService.DeleteById(Id);
 		System.out.println("Delete a product");
 	}
+	
+	
 	
 	
 	@GetMapping("{id}")
