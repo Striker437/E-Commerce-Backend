@@ -4,6 +4,8 @@ package com.Ecommerce.Controller;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ecommerce.Entity.Product;
+import com.Ecommerce.Repository.ProductRepository;
 import com.Ecommerce.Service.ProductService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,6 +30,10 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+	
+	
+	@Autowired
+	ProductRepository productRepository;
 	
 	@GetMapping("/getall")
 	public List<Product> getAllProducts()
@@ -51,7 +58,10 @@ public class ProductController {
 		
 	}
 	
-	@GetMapping("/search/{keyword}")
+	
+	
+	//for searching products by name 
+	@GetMapping("/search/{keyword}")                  
 	public List<Product> getProductsByContainingName(@PathVariable("keyword") String keyword)
 	{
 		List<Product>productListByName=productService.getProductsByContainingName(keyword);
@@ -66,10 +76,25 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("{id}")
-	public void DeleteProduct(@PathVariable("id") int Id)
+	public List<Product> DeleteProduct(@PathVariable("id") int Id)
 	{
-		productService.DeleteById(Id);
-		System.out.println("Delete a product");
+		return productService.DeleteById(Id);
+		
+		
+		
+	}
+	
+	@DeleteMapping("/categorywise/{id}")
+	public List<Product> DeleteProductCategory(@PathVariable("id") int Id)
+	{
+		List<Product> listproductCategory=productService.DeleteProductCategory(Id);
+		return listproductCategory;
+		
+		
+		
+		
+		
+		
 	}
 	
 	
