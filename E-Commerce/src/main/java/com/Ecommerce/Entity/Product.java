@@ -23,9 +23,9 @@ public class Product {
 	
 	/*
 	 * @ManyToOne Order order;
-	 * 
-	 * @ManyToOne Cart cart;
 	 */
+	 // @ManyToOne Cart cart;
+	 
 	public int getId() {
 		return id;
 	}
