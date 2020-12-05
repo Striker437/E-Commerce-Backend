@@ -41,8 +41,11 @@ public class CartService {
 		
 	}
 
-	public List<Product> getProductsByCartId(int cart_id) {
+	public List<Product> getProductsByCartId(int user_id) {
 		
+		Optional<User> optional=userRepository.findById(user_id);
+		User user=optional.get();
+		int cart_id=user.getCart().getId();
 		List<Product> productlist=cartRepository.findProductsByCartId(cart_id);
 		return productlist;
 	}

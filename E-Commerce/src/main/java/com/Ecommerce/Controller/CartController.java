@@ -31,11 +31,11 @@ public class CartController {
 	}
 	
 	
-	   @GetMapping("/getproducts/{cart_id}")
-		public List<Product> getProductsinCartbyUserId(@PathVariable("cart_id")  int cart_id)
+	   @GetMapping("/getproducts/{user_id}")
+		public List<Product> getProductsinCartbyUserId(@PathVariable("user_id")  int user_id)
 		{
 			
-		List<Product> ProductList=cartService.getProductsByCartId(cart_id);
+		List<Product> ProductList=cartService.getProductsByCartId(user_id);
 		return ProductList;
 		}
 	   
