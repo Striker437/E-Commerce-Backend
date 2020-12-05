@@ -1,12 +1,16 @@
 package com.Ecommerce.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ecommerce.Entity.Cart;
+import com.Ecommerce.Entity.Product;
 import com.Ecommerce.Service.CartService;
 
 @RestController
@@ -18,11 +22,27 @@ public class CartController {
 	
 	
 	
-	/*
-	 * @PostMapping("/{id}") public Cart AdditemtoCart(@PathVariable("id") int id) {
-	 * Cart cart=cartService.AdditemtoCart(id); return null;
-	 * 
-	 * }
-	 */
+	
+	@GetMapping("/getcart/{user_id}")
+	public Cart GetCartbyUserId(@PathVariable("user_id") int user_id)
+	{
+		Cart cart=cartService.GetCartbyUserId(user_id);
+		return cart;
+	}
+	
+	
+	   @GetMapping("/getproducts/{cart_id}")
+		public List<Product> getProductsinCartbyUserId(@PathVariable("cart_id")  int cart_id)
+		{
+			
+		List<Product> ProductList=cartService.getProductsByCartId(cart_id);
+		return ProductList;
+		}
+	   
+	   
+	   
+	   
+	 
+	
 
 }

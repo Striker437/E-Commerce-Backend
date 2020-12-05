@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class User {
 	
@@ -29,6 +31,7 @@ public class User {
 	int phoneno;
 	String role;
 	
+	@JsonBackReference
 	  @OneToOne
 	  Cart cart;
 	 
@@ -41,6 +44,12 @@ public class User {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	public String getPassword() {
 		return password;
