@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Ecommerce.Entity.Category;
 import com.Ecommerce.Repository.CategoryRepository;
 import com.Ecommerce.Service.CategoryService;
-import com.Ecommerce.Service.ProductService;
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/category")
+@CrossOrigin(origins = "*")
+//http://localhost:4200
+@RequestMapping("/categories")
 public class CategoryController {
 	
 	@Autowired
@@ -33,41 +33,42 @@ public class CategoryController {
 	
 	//get all categories
 	@GetMapping("/")
-	public List<Category> getAllCategory()
+	public ResponseEntity<List<Category>> getAllCategory()
 	{
-		
 		List<Category> CategoryList=categoryService.getAllCategory();
 		System.out.println("Category list"+CategoryList.toString());
-		return CategoryList;
-		
-		
+		return ResponseEntity.ok(CategoryList);	
 		
 	}
 	
 	
 	//Add a category by id in database from client
 	@PostMapping("/")
-	public void AddCategory(@RequestBody Category category)
+	public ResponseEntity<Category> AddCategory(@RequestBody Category category)
+	
 	{
+		System.out.println("Create Category Called");
 		categoryService.AddCategory(category);
+		return ResponseEntity.ok(category);
 	  
 	}
 	
 	//get a category by id from database
 	@GetMapping("/{Id}")
-	public Category getCategoryById(@PathVariable("Id") int Id)
+	public ResponseEntity<Category> getCategoryById(@PathVariable("Id") int Id)
 	{
 		Optional<Category> optional=categoryService.getCategoryById(Id);
 		Category category=optional.get();
-		return category;
+		return ResponseEntity.ok(category);
 	}
 	
 	//Update a category by id
 	
 	@PutMapping("/{Id}")
-	public void UpdateCategoryById(@PathVariable("Id") int Id, @RequestBody Category category)
+	public ResponseEntity<Category> UpdateCategoryById(@PathVariable("Id") int Id, @RequestBody Category category)
 	{
 		categoryService.UpdateCategoryById(Id, category);
+		return ResponseEntity.ok(category);
 	}
 	
 	
