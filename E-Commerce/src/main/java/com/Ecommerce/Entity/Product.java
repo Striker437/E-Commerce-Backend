@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 public class Product {
@@ -21,11 +23,21 @@ public class Product {
 	@ManyToOne
 	Category category;
 	
+	@JsonBackReference
+    @ManyToOne 
+    Cart cart;
+	
 	/*
 	 * @ManyToOne Order order;
 	 */
-	 // @ManyToOne Cart cart;
+	
 	 
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 	public int getId() {
 		return id;
 	}

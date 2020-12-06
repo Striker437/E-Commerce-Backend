@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Cart {
 	
@@ -20,8 +22,16 @@ public class Cart {
 	int id;
 	int totalprice;
 	int quantity;
-	@OneToOne
+	
+	@JsonManagedReference
+	@OneToOne(cascade = CascadeType.ALL ,mappedBy = "cart")
 	User user;
+	
+	
+	@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "cart")
+	  List<Product>Productlist=new ArrayList<>();
+	
 	public int getId() {
 		return id;
 	}
@@ -47,10 +57,17 @@ public class Cart {
 		this.user = user;
 	}
 	
-	/*
-	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "cart")
-	 * List<Product>Productlist=new ArrayList<>();
-	 */
+	
+	  public List<Product> getProductlist() {
+		return Productlist;
+	}
+	public void setProductlist(List<Product> productlist) {
+		Productlist = productlist;
+	}
+
+
+	
+	 
 	 
 
 }
