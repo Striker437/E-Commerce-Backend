@@ -3,6 +3,7 @@ package com.Ecommerce.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class UserController {
 	UserRepository userRepository;
 	
 	@GetMapping("/user")
-	public List<User> getAllUser()
+	public ResponseEntity<List<User>> getAllUser()
 	{
 	User user1=new User();
 	user1.setName("Shivam Singh");
@@ -41,7 +42,7 @@ public class UserController {
 	user3.setRole("ROLE_USER");
 	userRepository.save(user3);
 	List<User>userlist=userRepository.findAll();
-	return userlist;
+	return ResponseEntity.ok(userlist);
 	
 	
 	}
