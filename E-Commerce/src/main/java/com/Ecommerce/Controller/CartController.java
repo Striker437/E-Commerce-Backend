@@ -32,12 +32,24 @@ public class CartController {
 	
 	
 	   @GetMapping("/getproducts/{user_id}")
-		public List<Product> getProductsinCartbyUserId(@PathVariable("user_id")  int user_id)
+		public List<Product> getProductsInCartbyUserId(@PathVariable("user_id")  int user_id)
 		{
 			
 		List<Product> ProductList=cartService.getProductsByCartId(user_id);
 		return ProductList;
 		}
+	   
+	   
+	   
+	   
+	   @GetMapping("/addtoCart/{product_id}")
+	   public Cart AddToCartByUserId(@PathVariable("product_id")  int product_id)
+	   {
+		   
+		   Cart cart=cartService.AddToCartByUserId(product_id);
+		   return cart;
+		   
+	   }
 	   
 	   
 	   

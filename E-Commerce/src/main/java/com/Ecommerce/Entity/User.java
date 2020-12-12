@@ -19,14 +19,15 @@ public class User {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	int id;
+	
 	String name;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	String firstName;
+	
+	String lastName;
+	
 	String password;
+	
+	String email;
 	String address;
 	int phoneno;
 	String role;
@@ -35,10 +36,24 @@ public class User {
 	  @OneToOne
 	  Cart cart;
 	 
-	/*
-	 * @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-	 * List<Order>Orderlist=new ArrayList<Order>();
-	 */
+	
+	  @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	  List<Order>orderList=new ArrayList<Order>();
+	  
+	  
+	  public void add(Order order)
+	  {
+		  if(order!=null)
+		  {
+			  if(orderList==null)
+				  orderList=new ArrayList<Order>();
+			  
+			  orderList.add(order);
+			  order.setUser(this);
+			  
+		  }
+	  }
+	 
 	public int getId() {
 		return id;
 	}
@@ -75,6 +90,61 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", password=" + password + ", email=" + email + ", address=" + address + ", phoneno=" + phoneno
+				+ ", role=" + role + ", cart=" + cart + ", orderList=" + orderList + "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

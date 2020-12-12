@@ -3,18 +3,32 @@ package com.Ecommerce.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Ecommerce.Entity.Country;
+import com.Ecommerce.Entity.State;
 import com.Ecommerce.Entity.User;
+import com.Ecommerce.Repository.CountryRepository;
+import com.Ecommerce.Repository.StateRepository;
 import com.Ecommerce.Repository.UserRepository;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	
+	@Autowired
+	CountryRepository countryRepository;
+	
+	@Autowired
+	StateRepository stateRepository;
 	
 	@GetMapping("/user")
 	public List<User> getAllUser()
@@ -44,6 +58,31 @@ public class UserController {
 	return userlist;
 	
 	
+	}
+	
+	
+	@GetMapping("/countries")
+	public List<Country> getAllCountries()
+	{
+		List<Country>CountryList=countryRepository.findAll();
+		return CountryList;
+	}
+	
+	@GetMapping("/states")
+	public List<State> getAllStates()
+	{
+		List<State> StateList=stateRepository.findAll();
+		return StateList;
+	}
+	
+	
+	@GetMapping("/getStatesByCode/{country_code}")
+	public List<State> getStatesByCountry(@PathVariable("country_code") String country_code )
+	{
+		Country country=countryRepository.findCountryByCode(country_code);
+		int country_id=country.getId();
+		List<State> StateList=stateRepository.findAllById(country_id);
+		return StateList;
 	}
 	
 	
