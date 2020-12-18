@@ -9,10 +9,9 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
@@ -21,69 +20,90 @@ public class Product {
 	String description;
 	int quantity;
 	String imageURL;
-	
-	@JsonIgnore   //used when we want only the productlist shown in rest api and not category with products , simply used when we want to ignore the given properties in rest api               
+
+	@JsonIgnore // used when we want only the productlist shown in rest api and not category
+				// with products , simply used when we want to ignore the given properties in
+				// rest api
 	@ManyToOne
 	Category category;
-	
+
 	@JsonBackReference
-    @ManyToOne 
-    Cart cart;
-	
+	@ManyToOne
+	Cart cart;
+
 	/*
 	 * @ManyToOne Order order;
 	 */
-	
-	 
+
+	Product() {
+
+		/*
+		 * default constructor
+		 */
+	}
+
 	public Cart getCart() {
 		return cart;
 	}
+
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 	public String getImageURL() {
 		return imageURL;
 	}
+
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
+
 	public Category getCategory() {
 		return category;
 	}
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	 
-	
 
 }

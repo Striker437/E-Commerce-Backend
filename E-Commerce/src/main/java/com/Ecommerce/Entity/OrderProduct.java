@@ -13,31 +13,26 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderProduct {
-	
-	
-	  @Id
-	  
-	  @GeneratedValue(strategy =GenerationType.IDENTITY)
-	  private int id;
-	 
-	
-	
-	
+
+	@Id
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	public OrderProduct() {
+		super();
+	}
+
 	String imageURL;
-	
+
 	int price;
-	
+
 	@ManyToOne
 	Order order;
-	
-       int quantity;
-	
-	int product_id;
-	
-	
-	
 
-	
+	int quantity;
+
+	int product_id;
 
 	public String getImageURL() {
 		return imageURL;
@@ -84,11 +79,5 @@ public class OrderProduct {
 		return "OrderProduct [id=" + id + ", imageURL=" + imageURL + ", price=" + price + ", order=" + order
 				+ ", quantity=" + quantity + ", product_id=" + product_id + "]";
 	}
-	
-	
-	
-
-	
-	
 
 }
