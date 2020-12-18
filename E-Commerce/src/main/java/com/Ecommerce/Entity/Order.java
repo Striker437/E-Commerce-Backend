@@ -23,9 +23,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "orders")
-public class Order{
-	
-	
+public class Order {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
@@ -34,40 +33,34 @@ public class Order{
 	Date date_created;
 	@UpdateTimestamp
 	Date last_updated;
+
+	public Order() {
+		super();
+	}
+
 	int total_price;
 	int total_quantity;
 	String order_tracking_number;
-	
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "shipping_address_id",  referencedColumnName = "id")
+	@JoinColumn(name = "shipping_address_id", referencedColumnName = "id")
 	Address shippingAddress;
-	
-	@OneToOne(cascade = CascadeType.ALL )
-	@JoinColumn(name = "billing_address_id" ,  referencedColumnName="id")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "billing_address_id", referencedColumnName = "id")
 	Address billingAddress;
-	
-	
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-	List<OrderProduct> orderItemList=new ArrayList<>();
-	
-	 @ManyToOne
-	   User user;
-	
-	 
-	 
-	 
-	 
-	 
-	 
-	public void add(OrderProduct item)
-	{
-		if(item!=null)
-		{
-			if(orderItemList==null)
-				orderItemList=new ArrayList<>();
-			
+	List<OrderProduct> orderItemList = new ArrayList<>();
+
+	@ManyToOne
+	User user;
+
+	public void add(OrderProduct item) {
+		if (item != null) {
+			if (orderItemList == null)
+				orderItemList = new ArrayList<>();
+
 			orderItemList.add(item);
 			item.setOrder(this);
 		}
@@ -160,14 +153,5 @@ public class Order{
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	
-	
-	
-	
-	 
-	 
-	
-	
-	
 
 }

@@ -15,78 +15,85 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
 	String name;
 	String firstName;
-	
+
 	String lastName;
-	
+
 	String password;
-	
+
 	String email;
 	String address;
 	int phoneno;
 	String role;
-	
+
 	@JsonBackReference
-	  @OneToOne
-	  Cart cart;
-	 
-	
-	  @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-	  List<Order>orderList=new ArrayList<Order>();
-	  
-	  
-	  public void add(Order order)
-	  {
-		  if(order!=null)
-		  {
-			  if(orderList==null)
-				  orderList=new ArrayList<Order>();
-			  
-			  orderList.add(order);
-			  order.setUser(this);
-			  
-		  }
-	  }
-	 
+	@OneToOne
+	Cart cart;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	List<Order> orderList = new ArrayList<Order>();
+
+	public void add(Order order) {
+		if (order != null) {
+			if (orderList == null)
+				orderList = new ArrayList<Order>();
+
+			orderList.add(order);
+			order.setUser(this);
+
+		}
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public Cart getCart() {
 		return cart;
 	}
+
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public int getPhoneno() {
 		return phoneno;
 	}
+
 	public void setPhoneno(int phoneno) {
 		this.phoneno = phoneno;
 	}
+
 	public String getRole() {
 		return role;
 	}
+
 	public void setRole(String role) {
 		this.role = role;
 	}
@@ -137,16 +144,5 @@ public class User {
 				+ ", password=" + password + ", email=" + email + ", address=" + address + ", phoneno=" + phoneno
 				+ ", role=" + role + ", cart=" + cart + ", orderList=" + orderList + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

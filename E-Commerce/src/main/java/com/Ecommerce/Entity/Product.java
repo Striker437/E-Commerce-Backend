@@ -20,8 +20,10 @@ public class Product {
 	String description;
 	int quantity;
 	String imageURL;
-	
-	@JsonIgnore   //used when we want only the productlist shown in rest api and not category with products , simply used when we want to ignore the given properties in rest api               
+
+	@JsonIgnore // used when we want only the productlist shown in rest api and not category
+				// with products , simply used when we want to ignore the given properties in
+				// rest api
 	@ManyToOne
 	Category category;
 

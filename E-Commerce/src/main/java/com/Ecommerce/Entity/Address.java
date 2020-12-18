@@ -14,24 +14,28 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Address {
-	
+
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String street;
-	
+
 	private String city;
-	
+
 	private String state;
-	
+
 	private String country;
-	
+
 	private String zipCode;
-	
+
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private Order order;
+
+	public Address() {
+		super();
+	}
 
 	@Override
 	public String toString() {
@@ -94,15 +98,5 @@ public class Address {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

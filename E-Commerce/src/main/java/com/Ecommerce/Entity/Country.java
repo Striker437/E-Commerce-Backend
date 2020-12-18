@@ -15,6 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Country {
 	
+	public Country() {
+		super();
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
