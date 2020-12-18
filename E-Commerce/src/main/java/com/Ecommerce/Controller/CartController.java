@@ -33,6 +33,7 @@ public class CartController {
 	
 	   @GetMapping("/getproducts/{user_id}")
 		public ResponseEntity<List<Product>> getProductsinCartbyUserId(@PathVariable("user_id")  int user_id)
+
 		{
 			
 		List<Product> ProductList=cartService.getProductsByCartId(user_id);
@@ -40,6 +41,23 @@ public class CartController {
 		}
 	   
 	   
+
+	   
+	   
+	   @GetMapping("/addtoCart/{product_id}")
+	   public Cart AddToCartByUserId(@PathVariable("product_id")  int product_id)
+	   {
+		   
+		   Cart cart=cartService.AddToCartByUserId(product_id);
+		   return cart;
+		   
+	   }
+	   
+	   
+	   
+	   
+	 
+	
 
 
 }

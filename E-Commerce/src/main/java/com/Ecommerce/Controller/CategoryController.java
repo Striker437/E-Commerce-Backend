@@ -19,9 +19,8 @@ import com.Ecommerce.Entity.Category;
 import com.Ecommerce.Repository.CategoryRepository;
 import com.Ecommerce.Service.CategoryService;
 @RestController
-@CrossOrigin(origins = "*")
-//http://localhost:4200
-@RequestMapping("/categories")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/category")
 public class CategoryController {
 	
 	@Autowired
